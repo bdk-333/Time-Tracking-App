@@ -45,6 +45,18 @@ Then open:
 
 `http://localhost:3000`
 
+## Easy Windows Launch
+
+For day-to-day use on Windows, you can double-click:
+
+`Launch Time Tracker.bat`
+
+That launcher:
+
+- starts the local server if it is not already running
+- waits for the app to become available
+- opens the browser automatically
+
 ## Data Storage
 
 Data is persisted in a local SQLite file:
@@ -55,3 +67,4 @@ Data is persisted in a local SQLite file:
 
 - The interface is focused on today only.
 - If a timer is still open on a later day, the backend automatically closes it at `23:59` of its start day to keep daily entries separate.
+- Time is stored with minute precision, but the active timer is displayed live with seconds in the UI so it feels responsive while you work.

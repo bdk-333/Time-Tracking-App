@@ -117,6 +117,8 @@ function formatCurrent(entry, currentMinute = nowMinute()) {
     projectName: entry.projectName,
     state: entry.pausedStartedMinute == null ? "running" : "paused",
     startedMinute: entry.startedMinute,
+    pausedTotalMinutes: entry.pausedTotalMinutes,
+    pausedStartedMinute: entry.pausedStartedMinute,
     dateKey: entry.dateKey,
     elapsedMinutes: getElapsedMinutes(
       {

@@ -9,98 +9,151 @@
   <body>
     <main class="app-shell">
       <header class="hero">
-        <div>
-          <p class="eyebrow">Daily Focus</p>
-          <h1>Today Time Tracker</h1>
+        <div class="hero-copy">
+          <p class="eyebrow">Local Daily Tracker</p>
+          <h1>Track Today Without Friction</h1>
+          <p class="hero-subtitle">
+            Start a task, switch instantly, and keep a clean picture of where your day goes.
+          </p>
         </div>
-        <div class="today-box">
-          <p>Tracking date</p>
-          <strong id="todayDate">-</strong>
+        <div class="hero-status">
+          <div class="today-box">
+            <p>Tracking date</p>
+            <strong id="todayDate">-</strong>
+          </div>
+          <div class="launch-hint">
+            <span class="section-label">Windows Launch</span>
+            <strong>Double-click the launcher batch file</strong>
+          </div>
         </div>
       </header>
 
-      <section class="card current-card">
-        <div>
-          <p class="section-label">Current Task</p>
-          <h2 id="currentTaskName">No active task</h2>
-          <p id="currentTaskMeta">Start by selecting a task below.</p>
-        </div>
-        <div class="timer-actions">
-          <div class="timer-readout" id="currentElapsed">00h 00m</div>
-          <div class="button-row">
-            <button id="pauseBtn" class="btn secondary" disabled>Pause</button>
-            <button id="resumeBtn" class="btn secondary" disabled>Resume</button>
-            <button id="endBtn" class="btn danger" disabled>End</button>
-          </div>
-        </div>
-      </section>
+      <section class="dashboard-grid">
+        <aside class="sidebar-column">
+          <section class="card current-card current-card-modern">
+            <div class="current-topline">
+              <div>
+                <p class="section-label">Current Task</p>
+                <h2 id="currentTaskName">No active task</h2>
+                <p id="currentTaskMeta">Start by selecting a task below.</p>
+              </div>
+              <span id="currentStateBadge" class="state-badge idle">Idle</span>
+            </div>
+            <div class="timer-readout-wrap">
+              <div class="timer-readout" id="currentElapsed">00:00:00</div>
+              <p class="timer-note">Saved with minute precision, displayed live with seconds.</p>
+            </div>
+            <div class="button-row">
+              <button id="pauseBtn" class="btn secondary" disabled>Pause</button>
+              <button id="resumeBtn" class="btn secondary" disabled>Resume</button>
+              <button id="endBtn" class="btn danger" disabled>End</button>
+            </div>
+          </section>
 
-      <section class="grid-two">
-        <section class="card">
-          <h3>Projects</h3>
-          <form id="projectForm" class="inline-form">
-            <input id="projectName" maxlength="100" placeholder="Project name (max 100)" required />
-            <button class="btn primary" type="submit">Add Project</button>
-          </form>
-          <div id="projectsList" class="list"></div>
-        </section>
+          <section class="card quick-card">
+            <div class="section-header-row">
+              <div>
+                <p class="section-label">Quick Start</p>
+                <h3>Start Anything Fast</h3>
+              </div>
+            </div>
+            <div class="quick-stack">
+              <label class="field-label" for="quickProjectSelect">Filter by project</label>
+              <select id="quickProjectSelect" aria-label="Filter tasks by project"></select>
+              <label class="field-label" for="quickTaskSelect">Choose task</label>
+              <select id="quickTaskSelect" aria-label="Task to start"></select>
+              <button id="quickStartBtn" class="btn primary wide" type="button">Start Selected Task</button>
+            </div>
+          </section>
 
-        <section class="card">
-          <h3>Tasks</h3>
-          <form id="taskForm" class="inline-form stack-on-tight">
-            <input id="taskName" maxlength="100" placeholder="Task name (max 100)" required />
-            <select id="taskProjectSelect" aria-label="Project for new task"></select>
-            <button class="btn primary" type="submit">Add Task</button>
-          </form>
-          <div id="tasksList" class="list"></div>
-        </section>
-      </section>
+          <section class="card management-card">
+            <div class="section-header-row">
+              <div>
+                <p class="section-label">Project Management</p>
+                <h3>Projects</h3>
+              </div>
+            </div>
+            <form id="projectForm" class="form-stack">
+              <input id="projectName" maxlength="100" placeholder="Project name (max 100)" required />
+              <div class="button-row">
+                <button id="projectSubmitBtn" class="btn primary" type="submit">Add Project</button>
+                <button id="projectCancelBtn" class="btn ghost" type="button" hidden>Cancel</button>
+              </div>
+            </form>
+            <div id="projectsList" class="list list-scroll"></div>
+          </section>
 
-      <section class="card">
-        <h3>Quick Start</h3>
-        <div class="inline-form">
-          <select id="quickProjectSelect" aria-label="Filter tasks by project"></select>
-          <select id="quickTaskSelect" aria-label="Task to start"></select>
-          <button id="quickStartBtn" class="btn primary" type="button">Start Task</button>
-        </div>
-      </section>
+          <section class="card management-card">
+            <div class="section-header-row">
+              <div>
+                <p class="section-label">Task Management</p>
+                <h3>Tasks</h3>
+              </div>
+            </div>
+            <form id="taskForm" class="form-stack">
+              <input id="taskName" maxlength="100" placeholder="Task name (max 100)" required />
+              <select id="taskProjectSelect" aria-label="Project for new task"></select>
+              <div class="button-row">
+                <button id="taskSubmitBtn" class="btn primary" type="submit">Add Task</button>
+                <button id="taskCancelBtn" class="btn ghost" type="button" hidden>Cancel</button>
+              </div>
+            </form>
+            <div id="tasksList" class="list list-scroll"></div>
+          </section>
+        </aside>
 
-      <section class="card">
-        <h3>Today Task List</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Task</th>
-                <th>Project</th>
-                <th>Total</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="taskTableBody"></tbody>
-          </table>
-        </div>
-      </section>
+        <section class="workspace-column">
+          <section class="card project-workspace-card">
+            <div class="section-header-row">
+              <div>
+                <p class="section-label">Main Workspace</p>
+                <h3>Projects and Task Groups</h3>
+              </div>
+              <p class="section-help">Projects are separated visually, and tasks without a project stay in their own bucket.</p>
+            </div>
+            <div id="projectGroups" class="project-groups"></div>
+          </section>
 
-      <section class="grid-three">
-        <section class="card">
-          <h3>Total by Task</h3>
-          <div id="totalsByTask"></div>
-        </section>
-        <section class="card">
-          <h3>Total by Project</h3>
-          <div id="totalsByProject"></div>
-        </section>
-        <section class="card">
-          <h3>Task per Project</h3>
-          <div id="totalsTaskPerProject"></div>
+          <section class="card">
+            <div class="section-header-row">
+              <div>
+                <p class="section-label">All Tasks</p>
+                <h3>Compact Today View</h3>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Task</th>
+                    <th>Project</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="taskTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="totals-grid">
+            <section class="card totals-card">
+              <h3>Total by Task</h3>
+              <div id="totalsByTask"></div>
+            </section>
+            <section class="card totals-card">
+              <h3>Total by Project</h3>
+              <div id="totalsByProject"></div>
+            </section>
+            <section class="card totals-card">
+              <h3>Task per Project</h3>
+              <div id="totalsTaskPerProject"></div>
+            </section>
+          </section>
         </section>
       </section>
     </main>
-
-    <template id="emptyStateTemplate">
-      <p class="empty-state">No entries yet.</p>
-    </template>
 
     <script src="/app.js"></script>
   </body>
