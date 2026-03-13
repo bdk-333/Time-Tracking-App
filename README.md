@@ -1,2 +1,57 @@
 # Time-Tracking-App
-GitHub Copilot Vibe Coding
+
+A local desktop web app for tracking how you spend time today.
+
+## Implemented MVP Scope
+
+This version includes only today's tracking workflow:
+
+- Create, edit, and delete projects (name max 100 chars)
+- Create, edit, and delete tasks (name max 100 chars)
+- Optional project association on each task
+- Start a task quickly from task list or quick-start selectors
+- Switching tasks auto-stops current task and starts the new task
+- Pause, resume, and end active task
+- No overlapping tasks
+- Minute-level time recording (start/stop/pause/resume are stored at minute precision)
+- Today's totals for:
+  - each task
+  - each project
+  - each task per project
+
+Out of scope for this MVP:
+
+- Historical browsing UI
+- Multi-day reports/statistics
+- Authentication/cloud sync
+
+## Tech Stack
+
+- Node.js
+- Express
+- SQLite (`better-sqlite3`)
+- Vanilla HTML/CSS/JavaScript
+
+## Run Locally
+
+From the repository root:
+
+```bash
+npm install
+npm start
+```
+
+Then open:
+
+`http://localhost:3000`
+
+## Data Storage
+
+Data is persisted in a local SQLite file:
+
+`data/time-tracking.db`
+
+## Notes on Daily Behavior
+
+- The interface is focused on today only.
+- If a timer is still open on a later day, the backend automatically closes it at `23:59` of its start day to keep daily entries separate.

@@ -1,0 +1,27 @@
+{
+  "name": "time-tracking-app",
+  "version": "1.0.0",
+  "description": "Local daily time tracking web app",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "test": "echo \"No automated tests configured yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdk-333/Time-Tracking-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/bdk-333/Time-Tracking-App/issues"
+  },
+  "homepage": "https://github.com/bdk-333/Time-Tracking-App#readme",
+  "dependencies": {
+    "better-sqlite3": "^12.6.2",
+    "express": "^5.2.1"
+  }
+}

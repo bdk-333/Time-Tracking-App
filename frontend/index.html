@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Today Time Tracker</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Daily Focus</p>
+          <h1>Today Time Tracker</h1>
+        </div>
+        <div class="today-box">
+          <p>Tracking date</p>
+          <strong id="todayDate">-</strong>
+        </div>
+      </header>
+
+      <section class="card current-card">
+        <div>
+          <p class="section-label">Current Task</p>
+          <h2 id="currentTaskName">No active task</h2>
+          <p id="currentTaskMeta">Start by selecting a task below.</p>
+        </div>
+        <div class="timer-actions">
+          <div class="timer-readout" id="currentElapsed">00h 00m</div>
+          <div class="button-row">
+            <button id="pauseBtn" class="btn secondary" disabled>Pause</button>
+            <button id="resumeBtn" class="btn secondary" disabled>Resume</button>
+            <button id="endBtn" class="btn danger" disabled>End</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid-two">
+        <section class="card">
+          <h3>Projects</h3>
+          <form id="projectForm" class="inline-form">
+            <input id="projectName" maxlength="100" placeholder="Project name (max 100)" required />
+            <button class="btn primary" type="submit">Add Project</button>
+          </form>
+          <div id="projectsList" class="list"></div>
+        </section>
+
+        <section class="card">
+          <h3>Tasks</h3>
+          <form id="taskForm" class="inline-form stack-on-tight">
+            <input id="taskName" maxlength="100" placeholder="Task name (max 100)" required />
+            <select id="taskProjectSelect" aria-label="Project for new task"></select>
+            <button class="btn primary" type="submit">Add Task</button>
+          </form>
+          <div id="tasksList" class="list"></div>
+        </section>
+      </section>
+
+      <section class="card">
+        <h3>Quick Start</h3>
+        <div class="inline-form">
+          <select id="quickProjectSelect" aria-label="Filter tasks by project"></select>
+          <select id="quickTaskSelect" aria-label="Task to start"></select>
+          <button id="quickStartBtn" class="btn primary" type="button">Start Task</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Today Task List</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Project</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="taskTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="grid-three">
+        <section class="card">
+          <h3>Total by Task</h3>
+          <div id="totalsByTask"></div>
+        </section>
+        <section class="card">
+          <h3>Total by Project</h3>
+          <div id="totalsByProject"></div>
+        </section>
+        <section class="card">
+          <h3>Task per Project</h3>
+          <div id="totalsTaskPerProject"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="emptyStateTemplate">
+      <p class="empty-state">No entries yet.</p>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
